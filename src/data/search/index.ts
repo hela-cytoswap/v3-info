@@ -3,10 +3,10 @@ import { TokenData } from 'state/tokens/reducer'
 import { useFetchedTokenDatas } from 'data/tokens/tokenData'
 import gql from 'graphql-tag'
 import { useState, useEffect, useMemo } from 'react'
-import { client } from 'apollo/client'
 import { usePoolDatas, useAllPoolData } from 'state/pools/hooks'
 import { PoolData } from 'state/pools/reducer'
 import { notEmpty, escapeRegExp } from 'utils'
+import { helaClient } from 'apollo/client'
 
 export const TOKEN_SEARCH = gql`
   query tokens($value: String, $id: String) {
@@ -145,14 +145,14 @@ export function useFetchSearchResults(value: string): {
   useEffect(() => {
     async function fetch() {
       try {
-        const tokens = await client.query<TokenRes>({
+        const tokens = await helaClient.query<TokenRes>({
           query: TOKEN_SEARCH,
           variables: {
             value: value ? value.toUpperCase() : '',
             id: value,
           },
         })
-        const pools = await client.query<PoolRes>({
+        const pools = await helaClient.query<PoolRes>({
           query: POOL_SEARCH,
           variables: {
             tokens: tokens.data.asSymbol?.map((t) => t.id),

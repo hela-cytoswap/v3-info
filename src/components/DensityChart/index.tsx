@@ -11,7 +11,7 @@ import { Pool, TickMath, TICK_SPACINGS, FeeAmount } from '@uniswap/v3-sdk'
 import { PoolData } from 'state/pools/reducer'
 import { CurrentPriceLabel } from './CurrentPriceLabel'
 import CustomToolTip from './CustomToolTip'
-import { Token, CurrencyAmount } from '@uniswap/sdk-core'
+import { Token, CurrencyAmount } from '@cytoswap/sdk-core'
 import JSBI from 'jsbi'
 import { useClients } from 'state/application/hooks'
 

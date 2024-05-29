@@ -1,4 +1,4 @@
-import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from '@uniswap/sdk-core'
+import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from '@cytoswap/sdk-core'
 
 export const CHAIN_IDS_TO_NAMES = {
   [ChainId.MAINNET]: 'mainnet',
@@ -15,6 +15,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [ChainId.BNB]: 'bnb',
   [ChainId.AVALANCHE]: 'avalanche',
   [ChainId.BASE]: 'base',
+  [ChainId.HELA]: 'hela',
 } as const
 
 // Include ChainIds in this array if they are not supported by the UX yet, but are already in the SDK.
@@ -53,6 +54,7 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   ChainId.BNB,
   ChainId.AVALANCHE,
   ChainId.BASE,
+  ChainId.HELA,
 ] as const
 
 /**
@@ -82,6 +84,7 @@ export const L1_CHAIN_IDS = [
   ChainId.CELO_ALFAJORES,
   ChainId.BNB,
   ChainId.AVALANCHE,
+  ChainId.HELA
 ] as const
 
 export type SupportedL1ChainId = (typeof L1_CHAIN_IDS)[number]
@@ -107,28 +110,8 @@ export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number]
  */
 export function getChainPriority(chainId: ChainId): number {
   switch (chainId) {
-    case ChainId.MAINNET:
-    case ChainId.GOERLI:
-    case ChainId.SEPOLIA:
+    case ChainId.HELA:
       return 0
-    case ChainId.ARBITRUM_ONE:
-    case ChainId.ARBITRUM_GOERLI:
-      return 1
-    case ChainId.OPTIMISM:
-    case ChainId.OPTIMISM_GOERLI:
-      return 2
-    case ChainId.POLYGON:
-    case ChainId.POLYGON_MUMBAI:
-      return 3
-    case ChainId.BASE:
-      return 4
-    case ChainId.BNB:
-      return 5
-    case ChainId.AVALANCHE:
-      return 6
-    case ChainId.CELO:
-    case ChainId.CELO_ALFAJORES:
-      return 7
     default:
       return 8
   }

@@ -1,8 +1,8 @@
-## Uniswap Info V3
+## Cytoswap Info V3
 
-An open sourced interface for Uniswap V3 analytics. 
+An open sourced interface for Cytoswap V3 analytics. 
 
-Info URL: https://info.uniswap.org/#/
+Info URL: https://info.cytoswap.com/#/
 
 ## Development
 

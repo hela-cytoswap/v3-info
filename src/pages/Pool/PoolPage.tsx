@@ -26,12 +26,12 @@ import DensityChart from 'components/DensityChart'
 import { MonoSpace } from 'components/shared'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { Navigate, useParams } from 'react-router-dom'
 import { Trace } from '@uniswap/analytics'
 import { InterfacePageName } from '@uniswap/analytics-events'
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@cytoswap/sdk-core'
+import { HeLaNetworkInfo } from 'constants/networks'
 
 const ContentLayout = styled.div`
   display: grid;
@@ -166,7 +166,7 @@ function PoolPage({ address }: { address: string }) {
               </AutoRow>
               <RowFixed gap="10px" align="center">
                 <SavedIcon fill={savedPools.includes(address)} onClick={() => addSavedPool(address)} />
-                <StyledExternalLink href={getExplorerLink(ChainId.MAINNET, address, ExplorerDataType.ADDRESS)}>
+                <StyledExternalLink href={getExplorerLink(ChainId.HELA, address, ExplorerDataType.ADDRESS)}>
                   <ExternalLink stroke={theme?.text2} size={'17px'} style={{ marginLeft: '12px' }} />
                 </StyledExternalLink>
               </RowFixed>
@@ -181,7 +181,7 @@ function PoolPage({ address }: { address: string }) {
                     fontSize="24px"
                   >{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
                   <GreyBadge>{feeTierPercent(poolData.feeTier)}</GreyBadge>
-                  {activeNetwork === EthereumNetworkInfo ? null : (
+                  {activeNetwork === HeLaNetworkInfo ? null : (
                     <GenericImageWrapper src={activeNetwork.imageURL} style={{ marginLeft: '8px' }} size={'26px'} />
                   )}
                 </RowFixed>
@@ -212,27 +212,6 @@ function PoolPage({ address }: { address: string }) {
                   </StyledInternalLink>
                 </ResponsiveRow>
               </AutoColumn>
-              {activeNetwork !== EthereumNetworkInfo ? null : (
-                <RowFixed>
-                  <StyledExternalLink
-                    href={`https://app.uniswap.org/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
-                  >
-                    <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
-                      <RowBetween>
-                        <Download size={24} />
-                        <div style={{ display: 'flex', alignItems: 'center' }}>Add Liquidity</div>
-                      </RowBetween>
-                    </ButtonGray>
-                  </StyledExternalLink>
-                  <StyledExternalLink
-                    href={`https://app.uniswap.org/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
-                  >
-                    <ButtonPrimary width="100px" style={{ height: '44px' }}>
-                      Trade
-                    </ButtonPrimary>
-                  </StyledExternalLink>
-                </RowFixed>
-              )}
             </ResponsiveRow>
             <ContentLayout>
               <DarkGreyCard>

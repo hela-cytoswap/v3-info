@@ -53,7 +53,7 @@ export function useDerivedOffsetTVLHistory() {
           const accum = await accumP
           const { data } = await fetchPoolChartData(address, dataClient)
           if (!data) return accum
-          dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: SupportedNetwork.ETHEREUM }))
+          dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: SupportedNetwork.HELA }))
           data.map((poolDayData: PoolChartEntry) => {
             const { date, totalValueLockedUSD, volumeUSD } = poolDayData
             const roundedDate = date
@@ -89,7 +89,7 @@ const POOL_COUNT_FOR_AGGREGATE = 20
 
 /**
  * Derives historical TVL data for top 50 pools.
- * @returns Chart data for aggregate Uniswap TVL over time.
+ * @returns Chart data for aggregate Cytoswap TVL over time.
  */
 export function useDerivedProtocolTVLHistory() {
   const dataClient = useDataClient()
