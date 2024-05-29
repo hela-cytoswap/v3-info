@@ -166,7 +166,7 @@ export default function Home() {
                     ? weeklyVolumeData
                     : formattedVolumeData
                 }
-                color={theme?.blue1}
+                color={activeNetwork.primaryColor}
                 setValue={setVolumeHover}
                 setLabel={setRightLabel}
                 value={volumeHover}

@@ -302,7 +302,7 @@ function PoolPage({ address }: { address: string }) {
                 {view === ChartView.VOL ? (
                   <BarChart
                     data={formattedVolumeData}
-                    color={backgroundColor}
+                    color={activeNetwork.primaryColor}
                     minHeight={340}
                     setValue={setLatestValue}
                     setLabel={setValueLabel}
@@ -312,7 +312,7 @@ function PoolPage({ address }: { address: string }) {
                 ) : view === ChartView.FEES ? (
                   <BarChart
                     data={formattedFeesUSD}
-                    color={backgroundColor}
+                    color={activeNetwork.primaryColor}
                     minHeight={340}
                     setValue={setLatestValue}
                     setLabel={setValueLabel}
@@ -320,13 +320,13 @@ function PoolPage({ address }: { address: string }) {
                     label={valueLabel}
                   />
                 ) : (
-                  <DensityChart address={address} />
+                  <DensityChart address={address} color={activeNetwork.primaryColor}/>
                 )}
               </DarkGreyCard>
             </ContentLayout>
             <TYPE.main fontSize="24px">Transactions</TYPE.main>
             <DarkGreyCard>
-              {transactions ? <TransactionTable transactions={transactions} /> : <LocalLoader fill={false} />}
+              {transactions ? <TransactionTable transactions={transactions} color={activeNetwork.primaryColor} /> : <LocalLoader fill={false} />}
             </DarkGreyCard>
           </AutoColumn>
         ) : (

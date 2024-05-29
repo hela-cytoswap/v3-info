@@ -156,7 +156,7 @@ export default function App() {
                   <TYPE.label>
                     The Graph hosted network which provides data for this site is temporarily experiencing issues. Check
                     current status{' '}
-                    <ExternalLink href="https://subgraph.snapresearch.xyz/subgraphs/name/cytoswap-mainnet">
+                    <ExternalLink href={process.env.REACT_APP_SUBGRAPH_HELA_CLIENT!}>
                       here.
                     </ExternalLink>
                   </TYPE.label>

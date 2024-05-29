@@ -84,7 +84,7 @@ const Menu = styled.div<{ $hide: boolean }>`
     0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
   display: ${({ $hide }) => $hide && 'none'};
-  border: 1px solid ${({ theme }) => theme.pink1};
+  border: 1px solid #35D07F };
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     position: absolute;
@@ -148,8 +148,8 @@ const OptionButton = styled.div<{ $enabled: boolean }>`
   margin-right: 10px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme, $enabled }) => ($enabled ? theme.pink1 : 'transparent')};
-  color: ${({ theme, $enabled }) => ($enabled ? theme.white : theme.pink1)};
+  background-color: ${({ theme, $enabled }) => ($enabled ? '#35D07F' : 'transparent')};
+  color: ${({ theme, $enabled }) => ($enabled ? theme.white : '#35D07F')};
   :hover {
     opacity: 0.6;
     cursor: pointer;
