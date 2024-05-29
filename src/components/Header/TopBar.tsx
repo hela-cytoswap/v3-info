@@ -30,7 +30,7 @@ const TopBar = () => {
     <Wrapper>
       <RowBetween>
         <Polling />
-        <AutoRow $gap="6px">
+        {/* <AutoRow $gap="6px">
           <RowFixed>
             {activeNetwork.id === SupportedNetwork.CELO ? (
               <Item>Celo Price:</Item>
@@ -39,17 +39,17 @@ const TopBar = () => {
             ) : activeNetwork.id === SupportedNetwork.AVALANCHE ? (
               <Item>AVAX Price:</Item>
             ) : (
-              <Item>Eth Price:</Item>
+              <Item>HLUSD Price:</Item>
             )}
             <Item fontWeight="700" ml="4px">
-              {formatDollarAmount(ethPrices?.current)}
+              {formatDollarAmount(1)}
             </Item>
           </RowFixed>
-        </AutoRow>
+        </AutoRow> */}
         <AutoRow $gap="6px" style={{ justifyContent: 'flex-end' }}>
-          <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink>
-          <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink>
-          <StyledLink href="https://app.uniswap.org/#/swap">App</StyledLink>
+          {/* <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink> */}
+          {/* <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink> */}
+          <StyledLink href="https://cytoswap.com">App</StyledLink>
         </AutoRow>
       </RowBetween>
     </Wrapper>

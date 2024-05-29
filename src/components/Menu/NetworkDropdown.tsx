@@ -1,9 +1,6 @@
 import { RowFixed, RowBetween } from 'components/Row'
 import {
-  AvalancheNetworkInfo,
-  BNBNetworkInfo,
-  CeloNetworkInfo,
-  PolygonNetworkInfo,
+  HeLaNetworkInfo,
   SUPPORTED_NETWORK_VERSIONS,
 } from 'constants/networks'
 import useTheme from 'hooks/useTheme'
@@ -14,7 +11,6 @@ import styled from 'styled-components'
 import { StyledInternalLink, TYPE } from 'theme'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { AutoColumn } from 'components/Column'
-import { EthereumNetworkInfo } from '../../constants/networks'
 
 const Container = styled.div`
   position: relative;
@@ -104,7 +100,7 @@ export default function NetworkDropdown() {
           <TYPE.main fontSize="14px" color={theme?.white} ml="8px" mt="-2px" mr="2px" style={{ whiteSpace: 'nowrap' }}>
             {activeNetwork.name}
           </TYPE.main>
-          {[EthereumNetworkInfo, PolygonNetworkInfo, CeloNetworkInfo, BNBNetworkInfo, AvalancheNetworkInfo].includes(
+          {[HeLaNetworkInfo].includes(
             activeNetwork,
           ) ? null : (
             <Badge $bgColor={activeNetwork.primaryColor} style={{ margin: '0 4px' }}>
@@ -122,7 +118,7 @@ export default function NetworkDropdown() {
             </TYPE.main>
             {SUPPORTED_NETWORK_VERSIONS.map((n) => {
               return (
-                <StyledInternalLink key={n.id} to={`${n === EthereumNetworkInfo ? '' : '/' + n.route}/`}>
+                <StyledInternalLink key={n.id} to={`${n === HeLaNetworkInfo ? '' : '/' + n.route}/`}>
                   <NetworkRow
                     onClick={() => {
                       setShowMenu(false)

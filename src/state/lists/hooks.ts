@@ -88,6 +88,7 @@ export function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): Token
 // merge tokens contained within lists from urls
 function useCombinedTokenMapFromUrls(urls: string[] | undefined): TokenAddressMap {
   const lists = useAllLists()
+  console.log(lists)
   return useMemo(() => {
     if (!urls) return {}
     return (
@@ -126,7 +127,8 @@ export function useInactiveListUrls(): string[] {
 export function useCombinedActiveList(): TokenAddressMap {
   const activeListUrls = useActiveListUrls()
   const activeTokens = useCombinedTokenMapFromUrls(activeListUrls)
-  return combineMaps(activeTokens, TRANSFORMED_DEFAULT_TOKEN_LIST)
+  console.log(activeTokens)
+  return activeTokens
 }
 
 // all tokens from inactive lists

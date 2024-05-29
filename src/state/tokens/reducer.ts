@@ -12,7 +12,7 @@ import { PriceChartEntry, Transaction } from 'types'
 import { SupportedNetwork } from 'constants/networks'
 
 export type TokenData = {
-  // token is in some pool on uniswap
+  // token is in some pool on cytoswap
   exists: boolean
 
   // basic token info
@@ -66,14 +66,7 @@ export interface TokensState {
 
 export const initialState: TokensState = {
   byAddress: {
-    [SupportedNetwork.ETHEREUM]: {},
-    [SupportedNetwork.ARBITRUM]: {},
-    [SupportedNetwork.OPTIMISM]: {},
-    [SupportedNetwork.POLYGON]: {},
-    [SupportedNetwork.CELO]: {},
-    [SupportedNetwork.BNB]: {},
-    [SupportedNetwork.AVALANCHE]: {},
-    [SupportedNetwork.BASE]: {},
+    [SupportedNetwork.HELA]: {},
   },
 }
 

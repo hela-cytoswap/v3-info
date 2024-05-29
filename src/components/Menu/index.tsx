@@ -81,8 +81,6 @@ const MenuItem = styled(ExternalLink)`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-v3-info'
-
 export default function Menu() {
   const node = useRef<HTMLDivElement>(null)
   const [isOpen, setOpen] = useState(false)
@@ -97,21 +95,9 @@ export default function Menu() {
 
       {isOpen && (
         <MenuFlyout>
-          <MenuItem id="link" href="https://uniswap.org/">
+          <MenuItem id="link" href="https://cytoswap.com/">
             <Info size={14} />
             About
-          </MenuItem>
-          <MenuItem id="link" href="https://docs.uniswap.org/">
-            <BookOpen size={14} />
-            Docs
-          </MenuItem>
-          <MenuItem id="link" href={CODE_LINK}>
-            <Code size={14} />
-            Github
-          </MenuItem>
-          <MenuItem id="link" href="https://discord.gg/FCfyBSbCU5">
-            <MessageCircle size={14} />
-            Discord
           </MenuItem>
         </MenuFlyout>
       )}

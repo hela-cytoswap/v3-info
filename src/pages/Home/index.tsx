@@ -130,7 +130,7 @@ export default function Home() {
       <PageWrapper>
         <ThemedBackgroundGlobal $backgroundColor={activeNetwork.bgColor} />
         <AutoColumn $gap="16px">
-          <TYPE.main>Uniswap Overview</TYPE.main>
+          <TYPE.main>Cytoswap Overview</TYPE.main>
           <ResponsiveRow>
             <ChartWrapper>
               <LineChart

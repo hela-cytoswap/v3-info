@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import JSBI from 'jsbi'
 import keyBy from 'lodash.keyby'
 import { TickMath, tickToPrice } from '@uniswap/v3-sdk'
-import { Token } from '@uniswap/sdk-core'
+import { Token } from '@cytoswap/sdk-core'
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 
 const PRICE_FIXED_DIGITS = 4

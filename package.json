@@ -1,6 +1,6 @@
 {
-  "name": "@uniswap/interface",
-  "description": "Uniswap Interface",
+  "name": "@cytoswap/info",
+  "description": "Cytoswap Info",
   "homepage": ".",
   "private": true,
   "devDependencies": {
@@ -126,6 +126,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@apollo/client": "^3.8.6",
+    "@cytoswap/sdk-core": "^1.0.7",
     "@data-ui/histogram": "^0.0.84",
     "@ethersproject/experimental": "^5.7.0",
     "@types/ms": "^0.7.33",

@@ -5,8 +5,8 @@ import { TYPE, ExternalLink } from '../../theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from '../../state/application/hooks'
 import { ExplorerDataType, getExplorerLink } from '../../utils'
 import useTheme from 'hooks/useTheme'
-import { EthereumNetworkInfo } from 'constants/networks'
-import { ChainId } from '@uniswap/sdk-core'
+import { HeLaNetworkInfo } from 'constants/networks'
+import { ChainId } from '@cytoswap/sdk-core'
 
 const StyledPolling = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ export default function Polling() {
   const [activeNetwork] = useActiveNetworkVersion()
   const [status] = useSubgraphStatus()
   const [isMounted, setIsMounted] = useState(true)
-  const latestBlock = activeNetwork === EthereumNetworkInfo ? status.headBlock : status.syncedBlock
+  const latestBlock = activeNetwork === HeLaNetworkInfo ? status.headBlock : status.syncedBlock
 
   useEffect(
     () => {
@@ -87,7 +87,7 @@ export default function Polling() {
 
   return (
     <ExternalLink
-      href={latestBlock ? getExplorerLink(ChainId.MAINNET, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}
+      href={latestBlock ? getExplorerLink(ChainId.HELA, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}
     >
       <StyledPolling>
         <TYPE.small mr="4px" color={theme?.text3}>

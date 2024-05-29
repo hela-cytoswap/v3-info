@@ -1399,6 +1399,18 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@cytoswap/sdk-core@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@cytoswap/sdk-core/-/sdk-core-1.0.7.tgz#c6d7f9d4829769318701cc1ac6bd2e39948200ff"
+  integrity sha512-mUTUGBrd87LVWcvkt6YcXv3P/N3ArAStxCCjfx93L03DamMsbKh+6FLFVM1AoF6EebPolFjs/M+Oc5nNN2hFag==
+  dependencies:
+    "@ethersproject/address" "^5.0.2"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    toformat "^2.0.0"
+
 "@data-ui/histogram@^0.0.84":
   version "0.0.84"
   resolved "https://registry.yarnpkg.com/@data-ui/histogram/-/histogram-0.0.84.tgz#07738698bbb62dc5845a954b3b547df3e1d3498e"
