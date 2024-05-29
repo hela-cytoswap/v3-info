@@ -1,11 +1,11 @@
+import { ChainId } from '@cytoswap/sdk-core'
+import useHttpLocations from 'hooks/useHttpLocations'
 import React, { useMemo } from 'react'
+import { useActiveNetworkVersion } from 'state/application/hooks'
+import { useCombinedActiveList } from 'state/lists/hooks'
 import styled from 'styled-components'
 import { isAddress } from 'utils'
 import Logo from '../Logo'
-import { useCombinedActiveList } from 'state/lists/hooks'
-import useHttpLocations from 'hooks/useHttpLocations'
-import { useActiveNetworkVersion } from 'state/application/hooks'
-import { ChainId } from '@cytoswap/sdk-core'
 
 export function chainIdToNetworkName(networkId: ChainId) {
   switch (networkId) {
@@ -28,7 +28,7 @@ export function chainIdToNetworkName(networkId: ChainId) {
   }
 }
 
-const StyledLogo = styled(Logo)<{ size: string }>`
+const StyledLogo = styled(Logo) <{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: ${({ size }) => size};
@@ -56,10 +56,7 @@ export default function CurrencyLogo({
 }) {
   // useOptimismList()
   const helaList = useCombinedActiveList()?.[ChainId.HELA]
-  console.log('helaList', helaList)
-
   const [activeNetwork] = useActiveNetworkVersion()
-
   const checkSummed = isAddress(address)
 
   const helaURI = useMemo(() => {
@@ -69,7 +66,6 @@ export default function CurrencyLogo({
     return undefined
   }, [checkSummed, helaList])
   const uriLocationsHeLa = useHttpLocations(helaURI)
-  
 
   const srcs: string[] = useMemo(() => {
     const checkSummed = isAddress(address)
