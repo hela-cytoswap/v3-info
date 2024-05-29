@@ -308,7 +308,7 @@ export default function TokenPage() {
                   {view === ChartView.TVL ? (
                     <LineChart
                       data={formattedTvlData}
-                      color={backgroundColor}
+                      color={activeNetwork.primaryColor}
                       minHeight={340}
                       value={latestValue}
                       label={valueLabel}
@@ -318,7 +318,7 @@ export default function TokenPage() {
                   ) : view === ChartView.VOL ? (
                     <BarChart
                       data={formattedVolumeData}
-                      color={backgroundColor}
+                      color={activeNetwork.primaryColor}
                       minHeight={340}
                       value={latestValue}
                       label={valueLabel}
@@ -331,7 +331,7 @@ export default function TokenPage() {
                         data={adjustedToCurrent}
                         setValue={setLatestValue}
                         setLabel={setValueLabel}
-                        color={backgroundColor}
+                        color={activeNetwork.primaryColor}
                       />
                     ) : (
                       <LocalLoader fill={false} />
@@ -346,7 +346,7 @@ export default function TokenPage() {
               <TYPE.main>Transactions</TYPE.main>
               <DarkGreyCard>
                 {transactions ? (
-                  <TransactionTable transactions={transactions} color={backgroundColor} />
+                  <TransactionTable transactions={transactions} color={activeNetwork.primaryColor} />
                 ) : (
                   <LocalLoader fill={false} />
                 )}

@@ -54,6 +54,7 @@ const ActionButton = styled.div<{ disabled?: boolean }>`
 
 interface DensityChartProps {
   address: string
+  color?: string
 }
 
 export interface ChartEntry {
@@ -83,7 +84,7 @@ const initialState = {
   refAreaRight: '',
 }
 
-export default function DensityChart({ address }: DensityChartProps) {
+export default function DensityChart({ address, color }: DensityChartProps) {
   const theme = useTheme()
   const { dataClient } = useClients()
 
@@ -289,7 +290,7 @@ export default function DensityChart({ address }: DensityChartProps) {
             <XAxis reversed={true} tick={false} />
             <Bar
               dataKey="activeLiquidity"
-              fill="#2172E5"
+              fill="#02502F"
               isAnimationActive={false}
               shape={(props) => {
                 // eslint-disable-next-line react/prop-types
@@ -297,7 +298,7 @@ export default function DensityChart({ address }: DensityChartProps) {
               }}
             >
               {zoomedData?.map((entry, index) => {
-                return <Cell key={`cell-${index}`} fill={entry.isCurrent ? theme?.pink1 : theme?.blue1} />
+                return <Cell key={`cell-${index}`} fill={entry.isCurrent ? color : "#02502F"} />
               })}
               <LabelList
                 dataKey="activeLiquidity"

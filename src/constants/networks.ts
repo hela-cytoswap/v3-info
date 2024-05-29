@@ -1,5 +1,5 @@
 import { ChainId } from '@cytoswap/sdk-core'
-import CYTOSWAP_LOGO_URL from '../assets/images/cytoswap-logo.png'
+import HELA_LOGO_URL from '../assets/images/hela.png'
 
 export enum SupportedNetwork {
   HELA,
@@ -24,7 +24,7 @@ export const HeLaNetworkInfo: NetworkInfo = {
   bgColor: '#02502F',
   primaryColor: '#35D07F',
   secondaryColor: '#9ACDB2',
-  imageURL: CYTOSWAP_LOGO_URL,
+  imageURL: HELA_LOGO_URL,
 }
 
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [HeLaNetworkInfo]
