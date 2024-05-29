@@ -1,12 +1,12 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 export const healthClient = new ApolloClient({
-  uri: 'http://194.233.89.156:9030/graphql',
+  uri: process.env.REACT_APP_SUBGRAPH_HEALTH_CLIENT,
   cache: new InMemoryCache(),
 })
 
 export const helaBlockClient = new ApolloClient({
-  uri: 'https://subgraph.snapresearch.xyz/subgraphs/name/cytoswap-mainnet',
+  uri: process.env.REACT_APP_SUBGRAPH_HELA_BLOCK_CLIENT,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -21,7 +21,7 @@ export const helaBlockClient = new ApolloClient({
 })
 
 export const helaClient = new ApolloClient({
-  uri: 'https://subgraph.snapresearch.xyz/subgraphs/name/cytoswap-mainnet',
+  uri: process.env.REACT_APP_SUBGRAPH_HELA_CLIENT,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
