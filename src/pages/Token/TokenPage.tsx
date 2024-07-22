@@ -1,48 +1,48 @@
-import React, { useMemo, useState, useEffect } from 'react'
+import { ChainId } from '@cytoswap/sdk-core'
+import { Trace } from '@uniswap/analytics'
+import BarChart from 'components/BarChart/alt'
+import { SavedIcon } from 'components/Button'
+import CandleChart from 'components/CandleChart'
+import { DarkGreyCard, LightGreyCard } from 'components/Card'
+import { AutoColumn } from 'components/Column'
+import CurrencyLogo from 'components/CurrencyLogo'
+import LineChart from 'components/LineChart/alt'
+import Loader, { LocalLoader } from 'components/Loader'
+import { GenericImageWrapper } from 'components/Logo'
+import Percent from 'components/Percent'
+import PoolTable from 'components/pools/PoolTable'
+import { AutoRow, RowBetween, RowFixed, RowFlat } from 'components/Row'
+import { MonoSpace } from 'components/shared'
+import { ToggleElementFree, ToggleWrapper } from 'components/Toggle/index'
+import TransactionTable from 'components/TransactionsTable'
+import { ONE_HOUR_SECONDS, TimeWindow } from 'constants/intervals'
+import { HeLaNetworkInfo } from 'constants/networks'
+import dayjs from 'dayjs'
+import { useCMCLink } from 'hooks/useCMCLink'
+import { useColor } from 'hooks/useColor'
+import useTheme from 'hooks/useTheme'
+import { PageWrapper, ThemedBackground } from 'pages/styled'
+import { useEffect, useMemo, useState } from 'react'
+import { ExternalLink } from 'react-feather'
+import { useParams } from 'react-router-dom'
+import { useActiveNetworkVersion } from 'state/application/hooks'
+import { usePoolDatas } from 'state/pools/hooks'
 import {
-  useTokenData,
   usePoolsForToken,
   useTokenChartData,
+  useTokenData,
   useTokenPriceData,
   useTokenTransactions,
 } from 'state/tokens/hooks'
-import styled from 'styled-components'
-import { useColor } from 'hooks/useColor'
-import { ThemedBackground, PageWrapper } from 'pages/styled'
-import { shortenAddress, getExplorerLink, currentTimestamp, ExplorerDataType } from 'utils'
-import { AutoColumn } from 'components/Column'
-import { RowBetween, RowFixed, AutoRow, RowFlat } from 'components/Row'
-import { TYPE, StyledInternalLink } from 'theme'
-import Loader, { LocalLoader } from 'components/Loader'
-import { ExternalLink, Download } from 'react-feather'
-import { ExternalLink as StyledExternalLink } from '../../theme/components'
-import useTheme from 'hooks/useTheme'
-import CurrencyLogo from 'components/CurrencyLogo'
-import { formatDollarAmount } from 'utils/numbers'
-import Percent from 'components/Percent'
-import { ButtonPrimary, ButtonGray, SavedIcon } from 'components/Button'
-import { DarkGreyCard, LightGreyCard } from 'components/Card'
-import { usePoolDatas } from 'state/pools/hooks'
-import PoolTable from 'components/pools/PoolTable'
-import LineChart from 'components/LineChart/alt'
-import { unixToDate } from 'utils/date'
-import { ToggleWrapper, ToggleElementFree } from 'components/Toggle/index'
-import BarChart from 'components/BarChart/alt'
-import CandleChart from 'components/CandleChart'
-import TransactionTable from 'components/TransactionsTable'
 import { useSavedTokens } from 'state/user/hooks'
-import { ONE_HOUR_SECONDS, TimeWindow } from 'constants/intervals'
-import { MonoSpace } from 'components/shared'
-import dayjs from 'dayjs'
-import { useActiveNetworkVersion } from 'state/application/hooks'
+import styled from 'styled-components'
+import { StyledInternalLink, TYPE } from 'theme'
+import { currentTimestamp, ExplorerDataType, getExplorerLink, shortenAddress } from 'utils'
+import { unixToDate } from 'utils/date'
 import { networkPrefix } from 'utils/networkPrefix'
-import { GenericImageWrapper } from 'components/Logo'
-import { useCMCLink } from 'hooks/useCMCLink'
+import { formatDollarAmount } from 'utils/numbers'
 import CMCLogo from '../../assets/images/cmc.png'
-import { useParams } from 'react-router-dom'
-import { Trace } from '@uniswap/analytics'
-import { ChainId } from '@cytoswap/sdk-core'
-import { HeLaNetworkInfo } from 'constants/networks'
+import { ExternalLink as StyledExternalLink } from '../../theme/components'
 
 const PriceText = styled(TYPE.label)`
   font-size: 36px;
@@ -83,7 +83,7 @@ enum ChartView {
   PRICE,
 }
 
-const DEFAULT_TIME_WINDOW = TimeWindow.WEEK
+const DEFAULT_TIME_WINDOW = TimeWindow.MONTH
 
 export default function TokenPage() {
   const [activeNetwork] = useActiveNetworkVersion()
