@@ -1,24 +1,24 @@
-import React, { useRef, useCallback, useState, useEffect, useMemo } from 'react'
-import styled from 'styled-components'
-import Row, { RowFixed } from 'components/Row'
-import { HideSmall, TYPE } from 'theme'
-import Hotkeys from 'react-hot-keys'
-import { useFetchSearchResults } from 'data/search'
+import { SavedIcon } from 'components/Button'
+import { GreyBadge } from 'components/Card'
 import { AutoColumn } from 'components/Column'
 import CurrencyLogo from 'components/CurrencyLogo'
-import { formatDollarAmount } from 'utils/numbers'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
-import { GreyBadge } from 'components/Card'
-import { feeTierPercent } from 'utils'
-import { useSavedTokens, useSavedPools } from 'state/user/hooks'
-import { SavedIcon } from 'components/Button'
-import { useTokenDatas } from 'state/tokens/hooks'
-import { usePoolDatas } from 'state/pools/hooks'
 import HoverInlineText from 'components/HoverInlineText'
-import { TOKEN_HIDE, POOL_HIDE } from '../../constants/index'
-import { useActiveNetworkVersion } from 'state/application/hooks'
-import { networkPrefix } from 'utils/networkPrefix'
+import Row, { RowFixed } from 'components/Row'
+import { useFetchSearchResults } from 'data/search'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import Hotkeys from 'react-hot-keys'
 import { useNavigate } from 'react-router-dom'
+import { useActiveNetworkVersion } from 'state/application/hooks'
+import { usePoolDatas } from 'state/pools/hooks'
+import { useTokenDatas } from 'state/tokens/hooks'
+import { useSavedPools, useSavedTokens } from 'state/user/hooks'
+import styled from 'styled-components'
+import { HideSmall, TYPE } from 'theme'
+import { feeTierPercent } from 'utils'
+import { networkPrefix } from 'utils/networkPrefix'
+import { formatDollarAmount } from 'utils/numbers'
+import { POOL_HIDE, TOKEN_HIDE } from '../../constants/index'
 
 const Container = styled.div`
   position: relative;
@@ -84,7 +84,7 @@ const Menu = styled.div<{ $hide: boolean }>`
     0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
   display: ${({ $hide }) => $hide && 'none'};
-  border: 1px solid #35D07F };
+  border: 1px solid #35D07F;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     position: absolute;

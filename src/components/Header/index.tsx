@@ -1,15 +1,14 @@
-import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { AutoColumn } from 'components/Column'
+import NetworkDropdown from 'components/Menu/NetworkDropdown'
+import SearchSmall from 'components/Search'
 import { darken } from 'polished'
+import { NavLink, useLocation } from 'react-router-dom'
+import { useActiveNetworkVersion } from 'state/application/hooks'
 import styled from 'styled-components'
+import { networkPrefix } from 'utils/networkPrefix'
 import LogoDark from '../../assets/svg/cytoswap-logo-full.svg'
 import Menu from '../Menu'
-import Row, { RowFixed, RowBetween } from '../Row'
-import SearchSmall from 'components/Search'
-import NetworkDropdown from 'components/Menu/NetworkDropdown'
-import { useActiveNetworkVersion } from 'state/application/hooks'
-import { networkPrefix } from 'utils/networkPrefix'
-import { AutoColumn } from 'components/Column'
+import Row, { RowBetween, RowFixed } from '../Row'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -54,6 +53,8 @@ const HeaderControls = styled.div`
 `
 
 const HeaderRow = styled(RowFixed)`
+  flex-wrap: wrap;
+  width: unset;
   @media (max-width: 1080px) {
     width: 100%;
   }
@@ -61,9 +62,10 @@ const HeaderRow = styled(RowFixed)`
 
 const HeaderLinks = styled(Row)`
   justify-content: center;
+  width: auto;
   @media (max-width: 1080px) {
     padding: 0.5rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 `
 
@@ -150,32 +152,32 @@ const SmallContentGrouping = styled.div`
 `
 
 export default function Header() {
-  const [activeNewtork] = useActiveNetworkVersion()
+  const [activeNetwork] = useActiveNetworkVersion()
 
   const { pathname } = useLocation()
 
   return (
     <HeaderFrame>
       <HeaderRow>
-        <Title to={networkPrefix(activeNewtork)}>
+        <Title to={networkPrefix(activeNetwork)}>
           <UniIcon>
             <img width={'150px'} src={LogoDark} alt="cytoswap logo" />
           </UniIcon>
         </Title>
         <HeaderLinks>
-          <StyledNavLink id={`pool-nav-link`} to={networkPrefix(activeNewtork)} $isActive={pathname === '/'}>
+          <StyledNavLink id={`pool-nav-link`} to={networkPrefix(activeNetwork)} $isActive={pathname === '/'}>
             Overview
           </StyledNavLink>
           <StyledNavLink
             id={`stake-nav-link`}
-            to={networkPrefix(activeNewtork) + 'pools'}
+            to={networkPrefix(activeNetwork) + 'pools'}
             $isActive={pathname.includes('pools')}
           >
             Pools
           </StyledNavLink>
           <StyledNavLink
             id={`stake-nav-link`}
-            to={networkPrefix(activeNewtork) + 'tokens'}
+            to={networkPrefix(activeNetwork) + 'tokens'}
             $isActive={pathname.includes('tokens')}
           >
             Tokens

@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect, useCallback, Dispatch, SetStateAction, ReactNode } from 'react'
-import { createChart, IChartApi } from 'lightweight-charts'
 import { RowBetween } from 'components/Row'
-import Card from '../Card'
-import styled from 'styled-components'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import useTheme from 'hooks/useTheme'
+import { createChart, IChartApi } from 'lightweight-charts'
+import React, { Dispatch, ReactNode, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
+import styled from 'styled-components'
+import Card from '../Card'
 
 dayjs.extend(utc)
 
@@ -138,6 +138,12 @@ const CandleChart = ({
         borderUpColor: 'green',
         wickDownColor: 'red',
         wickUpColor: 'green',
+        priceFormat: {
+          type: 'custom',
+          formatter: (price: number) => {
+            return price;
+          }
+        }
       })
 
       series.setData(data)
