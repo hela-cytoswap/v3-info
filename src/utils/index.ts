@@ -1,9 +1,9 @@
+import { ChainId, Currency, CurrencyAmount, Fraction, Percent, Token } from '@cytoswap/sdk-core'
 import { getAddress } from '@ethersproject/address'
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
 import { Contract } from '@ethersproject/contracts'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
-import { ChainId, Currency, CurrencyAmount, Fraction, Percent, Token } from '@cytoswap/sdk-core'
 
 import JSBI from 'jsbi'
 import { TokenAddressMap } from '../state/lists/hooks'
@@ -32,7 +32,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [ChainId.BNB]: 'https://bscscan.com',
   [ChainId.AVALANCHE]: 'https://snowtrace.io',
   [ChainId.BASE]: 'https://basescan.org',
-  [ChainId.HELA]: 'https://mainnet-blockexplorer.helachain.com'
+  [ChainId.HELA]: 'https://helascan.io'
 }
 
 export enum ExplorerDataType {
@@ -50,7 +50,7 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-  const prefix = BLOCK_EXPLORER_PREFIXES[chainId] ?? 'https://mainnet-blockexplorer.helachain.com'
+  const prefix = BLOCK_EXPLORER_PREFIXES[chainId] ?? 'https://helascan.io'
 
   switch (type) {
     case ExplorerDataType.TRANSACTION:
